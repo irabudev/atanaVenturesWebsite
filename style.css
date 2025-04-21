@@ -1,0 +1,561 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --text-muted-color: #aaa;
+    --primary-color: #4a90e2;
+    --secondary-color: #50e3c2;
+    --card-bg: #2a2a2a;
+    --border-color: #444;
+    --hover-bg: #383838;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --link-hover-color: var(--secondary-color);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex; /* Keep flex for centering .container by default */
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 650px;
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative; /* Positioning context for absolute lang switcher */
+}
+
+/* --- Language Switcher --- */
+.lang-switcher {
+    position: absolute;
+    top: 20px;
+    right: 0; /* Align to the container edge by default */
+    background-color: var(--card-bg);
+    padding: 5px 8px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    z-index: 10;
+}
+
+.lang-button {
+    background: none;
+    border: none;
+    color: var(--text-muted-color);
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 3px 5px;
+    transition: color 0.2s ease;
+}
+
+.lang-button.active {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.lang-button:hover:not(.active) {
+    color: var(--text-color);
+}
+
+.lang-separator {
+    color: var(--border-color);
+    margin: 0 3px;
+    font-size: 0.8rem;
+}
+
+/* --- Header & Profile (on Index) --- */
+.profile-header {
+    padding: 20px 0;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--border-color);
+}
+
+h1 { /* General H1 styling */
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.tagline {
+    font-size: 1rem;
+    color: var(--text-muted-color);
+    margin-bottom: 0;
+}
+
+/* --- Resources Section (on Index) --- */
+.resources-section {
+    margin-bottom: 40px;
+}
+
+.resources-section h2 {
+    font-size: 1.3rem;
+    color: var(--text-muted-color);
+    margin-bottom: 25px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.resource-list li {
+    margin-bottom: 12px;
+}
+
+.resource-list li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    text-align: left;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.resource-list li a:hover,
+.resource-list li a:focus {
+    background-color: var(--hover-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.resource-list .icon {
+    margin-right: 18px;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    width: 25px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.resource-list .icon i {
+    vertical-align: middle;
+}
+
+.resource-list .text {
+    flex-grow: 1;
+    line-height: 1.4;
+}
+
+.resource-list .text strong {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.resource-list .text small {
+    font-size: 0.85rem;
+    color: var(--text-muted-color);
+    display: block;
+}
+
+.resource-list .shortcut {
+    display: none; /* Hidden by default */
+}
+
+/* --- Footer --- */
+.main-footer {
+    margin-top: auto; /* Pushes to bottom in flex containers */
+    padding-top: 20px;
+    font-size: 0.85rem;
+    color: var(--text-muted-color);
+    border-top: 1px solid var(--border-color);
+    width: 100%; /* Ensure footer takes full width within container */
+}
+
+.social-links {
+    margin-bottom: 15px;
+    text-align: center; /* Center social links */
+}
+
+.social-links a {
+    color: var(--text-muted-color);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.2s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+    color: var(--link-hover-color);
+    outline: none;
+}
+
+/* --- Generic Page Header (Used on subpages like stickers.html) --- */
+.page-header {
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Ensure header takes full width */
+}
+
+.page-header h1 {
+    font-size: 1.6rem;
+    margin: 0;
+    text-align: right; /* Align title towards the right by default */
+    flex-grow: 1; /* Allow title to take space */
+    padding-right: 10px; /* Space before lang switcher */
+}
+
+.back-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevent back link from shrinking */
+}
+
+.back-link i {
+    margin-right: 5px;
+}
+
+.back-link:hover,
+.back-link:focus {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+    outline: none;
+}
+
+/* --- Placeholder Content (Generic - for other subpages) --- */
+.placeholder-content {
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed var(--border-color); /* Thinner border */
+    border-radius: 8px;
+    padding: 40px;
+    margin: 20px 0; /* Reduced margin */
+    color: var(--text-muted-color);
+    width: 100%;
+    text-align: center;
+}
+
+.placeholder-content i {
+    font-size: 2.5rem; /* Smaller icon */
+    margin-bottom: 15px;
+    color: var(--border-color);
+}
+
+
+/* ====================================================== */
+/* === FULL HEIGHT LAYOUT STYLES (Stickers/Guides)    === */
+/* === Apply class .page-full-height to body tag      === */
+/* ====================================================== */
+
+/* Combine selectors for pages needing full height */
+.page-stickers, .page-guides,
+.page-stickers html, .page-guides html {
+    height: 100%;
+    overflow: hidden;
+}
+
+.page-stickers body,
+.page-guides body {
+    padding: 0;
+    align-items: stretch;
+    min-height: 100%;
+}
+
+.page-stickers .container,
+.page-guides .container {
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+    position: relative;
+    text-align: left;
+}
+
+/* Adjust language switcher position relative to the full-width container */
+.page-stickers .lang-switcher,
+.page-guides .lang-switcher {
+    top: 20px;
+    right: 20px;
+}
+
+.page-stickers .page-header,
+.page-guides .page-header {
+    flex-shrink: 0;
+    padding-top: 20px;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+    border-bottom: none; /* Remove border for full height */
+}
+
+.page-stickers .page-header h1,
+.page-guides .page-header h1 {
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* Main content area for full height pages */
+.page-stickers #uza-container,      /* Target stickers main */
+.page-guides #guides-content-area { /* Target guides main */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* Necessary if embed isn't flex */
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+/* Target the uza-products embed specifically */
+.page-stickers #uza-container uza-products,
+.page-guides #guides-content-area uza-products {
+    display: block; /* Or flex, test what works best */
+    width: 100%;
+    height: 100%;
+    flex-grow: 1; /* Helps if parent is flex */
+}
+
+.page-stickers .main-footer,
+.page-guides .main-footer {
+    flex-shrink: 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 15px;
+    margin-top: 0;
+}
+
+/* ====================================================== */
+/* === Standard Page Content Styles (Contact/About etc) === */
+/* ====================================================== */
+
+/* Main content area for standard pages */
+.page-content {
+    text-align: left;
+    padding: 10px 0 20px 0; /* Add padding */
+    color: var(--text-color);
+    line-height: 1.7;
+    width: 100%; /* Ensure it takes width within container */
+}
+
+.page-content h2 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-content p {
+    margin-bottom: 1.2em;
+}
+
+.page-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.page-content a:hover,
+.page-content a:focus {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+    outline: none;
+}
+
+/* --- Contact Page Specific Styles --- */
+.contact-info {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.contact-item i {
+    color: var(--primary-color);
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+}
+
+.contact-item strong {
+    margin-right: 8px;
+    color: var(--text-muted-color);
+}
+
+/* --- About Page Specific Styles --- */
+.about-content {
+     padding: 10px 0;
+}
+
+.profile-pic-about {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 25px auto; /* Center */
+    display: block;
+    border: 3px solid var(--border-color);
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.skills-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.skills-list li i {
+    color: var(--primary-color);
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 600px) {
+    html {
+        font-size: 15px;
+    }
+    /* Reduce body padding on non-full-height pages */
+    body:not(.page-stickers):not(.page-guides) {
+        padding: 15px;
+    }
+    /* Adjust default container padding */
+     .container:not(.page-stickers .container):not(.page-guides .container) {
+        padding-top: 50px; /* More space for abs switcher */
+        padding-bottom: 20px;
+    }
+
+    /* Mobile adjustments for FULL HEIGHT pages */
+    .page-stickers .container,
+    .page-guides .container {
+         padding: 0 15px; /* Reduced horizontal padding */
+    }
+    .page-stickers .lang-switcher,
+    .page-guides .lang-switcher {
+        top: 15px;
+        right: 15px;
+    }
+     .page-stickers .page-header,
+     .page-guides .page-header {
+        padding-top: 15px;
+    }
+    .page-stickers #uza-container,
+    .page-guides #guides-content-area {
+         margin-top: 8px;
+         margin-bottom: 8px;
+         border-radius: 6px;
+    }
+     .page-stickers .main-footer,
+     .page-guides .main-footer {
+        padding-bottom: 10px;
+    }
+
+    /* General Mobile Styles (Apply to ALL pages unless overridden) */
+    .lang-switcher { /* Default position */
+       top: 15px;
+       right: 15px;
+    }
+    .profile-header { padding: 10px 0; margin-bottom: 25px; }
+    .profile-pic { width: 80px; height: 80px; }
+    h1 { font-size: 1.6rem; }
+    .resources-section h2 { font-size: 1.2rem; margin-bottom: 20px; }
+    .resource-list li a { padding: 12px 15px; }
+    .resource-list .icon { font-size: 1.2rem; margin-right: 15px; width: 22px; }
+    .resource-list .text strong { font-size: 1rem; }
+    .resource-list .text small { font-size: 0.8rem; }
+    .social-links a { font-size: 1.4rem; margin: 0 8px; }
+
+    /* Adjust generic page header/title for mobile */
+    .page-header {
+        padding: 15px 0; margin-bottom: 15px;
+    }
+     .page-header h1 {
+        font-size: 1.4rem;
+    }
+    /* Ensure full-height page header titles aren't overridden */
+    .page-stickers .page-header h1,
+    .page-guides .page-header h1 {
+         font-size: 1.4rem; /* Keep consistent */
+         padding-left: 5px;
+    }
+
+
+    /* Adjust standard page content for mobile */
+    .page-content {
+        /* Reduce padding if needed */
+    }
+    .contact-info {
+        padding: 20px;
+    }
+    .about-content .profile-pic-about {
+        width: 100px;
+        height: 100px;
+    }
+     .page-content h2 {
+        font-size: 1.3rem;
+    }
+}

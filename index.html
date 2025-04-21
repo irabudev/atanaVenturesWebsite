@@ -1,1 +1,124 @@
-<h1>Hello World!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julius Moshiro - Atana Ventures</title>
+    <!-- Font Awesome CDN (Using v6 for more icon options) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon (Optional but recommended) -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+            <button id="lang-en" class="lang-button active" data-lang="en">EN</button>
+            <span class="lang-separator">|</span>
+            <button id="lang-sw" class="lang-button" data-lang="sw">SW</button>
+        </div>
+
+        <header class="profile-header">
+            <!-- Profile Info -->
+            <!-- Use your actual image path -->
+            <img src="images/profile.png" alt="Julius Moshiro Profile Picture" class="profile-pic">
+            <h1 data-translate="profileName">Julius Moshiro</h1>
+            <p class="tagline" data-translate="profileTagline">Digital Creator | Atana Ventures</p>
+        </header>
+
+        <section class="resources-section">
+            <h2 data-translate="resourceTitle">Explore Resources & Services</h2>
+
+            <ul class="resource-list">
+                <li>
+                    <a href="stickers.html">
+                        <span class="icon"><i class="fa-solid fa-tags fa-fw"></i></span>
+                        <span class="text">
+                            <strong data-translate="linkStickers">Buy Stickers</strong>
+                            <small data-translate="linkStickersDesc">Duka Stika Merch</small>
+                        </span>
+                        <span class="shortcut">M</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="guides.html">
+                        <span class="icon"><i class="fa-solid fa-book-open fa-fw"></i></span>
+                        <span class="text">
+                            <strong data-translate="linkPdfGuides">PDF Guides</strong>
+                            <small data-translate="linkPdfGuidesDesc">Purchase detailed guides</small>
+                        </span>
+                        <span class="shortcut">G</span>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a href="prints.html">
+                        <span class="icon"><i class="fa-solid fa-image fa-fw"></i></span>
+                        <span class="text">
+                            <strong data-translate="linkFramedPictures">Framed Pictures</strong>
+                            <small data-translate="linkFramedPicturesDesc">Buy photography prints</small>
+                        </span>
+                        <span class="shortcut">P</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="booking.html">
+                        <span class="icon"><i class="fa-solid fa-calendar-check fa-fw"></i></span>
+                        <span class="text">
+                            <strong data-translate="linkBooking">Book Me</strong>
+                            <small data-translate="linkBookingDesc">Tech, Running, Storytelling</small>
+                        </span>
+                        <span class="shortcut">B</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="newsletter.html">
+                        <span class="icon"><i class="fa-solid fa-envelope-open-text fa-fw"></i></span>
+                        <span class="text">
+                            <strong data-translate="linkNewsletter">Newsletter</strong>
+                            <small data-translate="linkNewsletterDesc">Subscribe for updates</small>
+                        </span>
+                        <span class="shortcut">N</span>
+                    </a>
+                </li> -->
+                 <li>
+                    <a href="about.html">
+                        <span class="icon"><i class="fa-solid fa-handshake-simple fa-fw"></i></span>
+                        <span class="text">
+                            <strong data-translate="linkCollaboration">Bookings & Collaboration</strong>
+                            <small data-translate="linkCollaborationDesc">Let's work together</small>
+                        </span>
+                         <span class="shortcut">S</span>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a href="resources.html">
+                        <span class="icon"><i class="fa-solid fa-gift fa-fw"></i></span>
+                        <span class="text">
+                            <strong data-translate="linkFreeResources">Free Resources</strong>
+                            <small data-translate="linkFreeResourcesDesc">Download guides & tips</small>
+                        </span>
+                        <span class="shortcut">R</span>
+                    </a>
+                </li> -->
+                <!-- Add more items as needed -->
+            </ul>
+        </section>
+
+
+        <footer class="main-footer">
+             <!-- Social Links (Optional) -->
+             <div class="social-links">
+                <a href="https://instagram.com/juliusmoshiro" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@juliusmoshiro" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p>© <span id="current-year"></span> Atana Ventures. <span data-translate="footerRights">All rights reserved.</span></p>
+        </footer>
+    </div>
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
