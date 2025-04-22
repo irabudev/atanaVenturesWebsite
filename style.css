@@ -304,7 +304,7 @@ body[data-theme="light"] .resource-list .shortcut {
 /* --- Footer --- */
 .main-footer {
     margin-top: auto;
-    padding-top: 5px;
+    padding-top: 2px;
     font-size: 0.85rem;
     color: var(--text-muted-color);
     border-top: 1px solid var(--footer-border-color);
@@ -458,8 +458,6 @@ body[data-theme="light"] .resource-list .shortcut {
     flex-shrink: 0; /* Footer doesn't grow/shrink */
     border-top: 1px solid var(--footer-border-color);
     text-align: center;
-    padding: 5px; /* Consistent padding */
-    margin-top: 0;
 }
 
 
