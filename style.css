@@ -304,7 +304,7 @@ body[data-theme="light"] .resource-list .shortcut {
 /* --- Footer --- */
 .main-footer {
     margin-top: auto;
-    padding-top: 30px;
+    padding-top: 5px;
     font-size: 0.85rem;
     color: var(--text-muted-color);
     border-top: 1px solid var(--footer-border-color);
@@ -334,9 +334,8 @@ body[data-theme="light"] .resource-list .shortcut {
 
 /* --- Generic Page Header (Subpages) --- */
 .page-header {
-    padding: 20px 0;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--header-border-color);
+    padding: 10px 0;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -351,7 +350,7 @@ body[data-theme="light"] .resource-list .shortcut {
 
 
 .page-header h1 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin: 0;
     text-align: right;
     flex-grow: 1;
@@ -363,7 +362,7 @@ body[data-theme="light"] .resource-list .shortcut {
 .back-link {
     color: var(--primary-color);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     display: inline-flex;
     align-items: center;
     flex-shrink: 0;
@@ -420,17 +419,16 @@ body[data-theme="light"] .resource-list .shortcut {
 
 .page-full-height-embed .page-header {
     flex-shrink: 0; /* Header doesn't grow/shrink */
-    padding-top: 10px; /* Reduced top padding */
-    padding-bottom: 10px; /* Reduced bottom padding */
-    padding-left: 20px; /* Add padding */
-    padding-right: 20px; /* Add padding */
-    border-bottom: 1px solid var(--header-border-color); /* Keep border */
+    padding-top: 3px; /* Reduced top padding */
+    padding-bottom: 3px; /* Reduced bottom padding */
+    padding-left: 10px; /* Add padding */
+    padding-right: 10px; /* Add padding */
     margin-bottom: 0; /* No margin */
 }
 
 .page-full-height-embed .page-header h1 {
     text-align: left;
-    padding-left: 10px; /* Spacing after back button */
+    padding-left: 5px; /* Spacing after back button */
     padding-right: 0;
 }
 
@@ -460,7 +458,7 @@ body[data-theme="light"] .resource-list .shortcut {
     flex-shrink: 0; /* Footer doesn't grow/shrink */
     border-top: 1px solid var(--footer-border-color);
     text-align: center;
-    padding: 15px 20px 15px 20px; /* Consistent padding */
+    padding: 5px; /* Consistent padding */
     margin-top: 0;
 }
 
@@ -528,13 +526,13 @@ body[data-theme="light"] .resource-list .shortcut {
          padding-top: 2px; /* Space for switchers */
     }
      .page-full-height-embed .switchers-container {
-        padding: 0 15px; /* Padding */
+        padding: 0 5px; /* Padding */
      }
      .page-full-height-embed .page-header {
-        padding: 8px 15px; /* Reduced padding */
+        padding: 5px 5px; /* Reduced padding */
     }
      .page-full-height-embed .main-footer {
-        padding: 10px 15px;
+        padding: 5px 5px;
     }
     /* Adjust embed container margin if using border/radius */
     /* .page-full-height-embed #uza-container { margin: 8px 15px; } */
@@ -553,7 +551,7 @@ body[data-theme="light"] .resource-list .shortcut {
     .social-links a { font-size: 1.5rem; margin: 0 10px; }
 
     /* Adjust generic subpage header/title for mobile */
-    .page-header { padding: 15px 0; margin-bottom: 15px; }
+    .page-header { padding: 3px 0; margin-bottom: 5px; }
     .page-header h1 { font-size: 1.4rem; }
     /* Adjust full-height page header title */
     .page-full-height-embed .page-header h1 { font-size: 1.4rem; padding-left: 5px; }

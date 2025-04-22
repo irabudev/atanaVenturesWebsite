@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contactEmailLabel: "Barua Pepe:",
             contactPhoneLabel: "Simu / WhatsApp:",
             contactSocialPrompt: "Nipate kwenye mitandao ya kijamii (viungo vipo chini).",
-            aboutTitle: "Kuhusu Mimi & Ushirikiano",
+            aboutTitle: "Tushirikiane",
             aboutIntro: "Habari, mimi ni Julius Moshiro. Nagundua ulimwengu wa kidijitali, nashiriki maarifa kutoka kwenye mbio zangu, nasimulia hadithi kupitia picha zangu, na najadili njia za kufanikiwa mtandaoni. Atana Ventures ndio jukwaa langu la safari hii.",
             aboutSkillsTitle: "Ninachozingatia",
             aboutSkillTech: "Zana na Mwenendo wa Kidijitali",
