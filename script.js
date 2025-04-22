@@ -5,146 +5,169 @@ document.addEventListener('DOMContentLoaded', () => {
     const langButtons = document.querySelectorAll('.lang-button');
     const translatableElements = document.querySelectorAll('[data-translate]');
     const yearSpan = document.getElementById('current-year');
+    const themeToggleButton = document.getElementById('theme-toggle'); // Get theme toggle button
+    const bodyElement = document.body; // Get body element
 
-    // --- Translations (Includes keys from all pages) ---
+    // --- Translations (Same as your last version) ---
     const translations = {
         en: {
-            // Index Page
             profileName: "Julius Moshiro",
             profileTagline: "Digital Creator | Atana Ventures",
-            resourceTitle: "Explore Resources & Services",
-            linkFreeResources: "Free Resources",
-            linkFreeResourcesDesc: "Download guides & tips",
-            linkNewsletter: "Newsletter",
-            linkNewsletterDesc: "Subscribe for updates",
-            linkStickers: "Buy Stickers",
-            linkStickersDesc: "Duka Stika Merch",
-            linkPdfGuides: "PDF Guides",
-            linkPdfGuidesDesc: "Purchase detailed guides",
-            linkFramedPictures: "Framed Pictures",
-            linkFramedPicturesDesc: "Buy photography prints",
-            linkCollaboration: "Collaboration",
-            linkCollaborationDesc: "Let's work together",
-            linkBooking: "Book Me",
-            linkBookingDesc: "Tech, Running, Storytelling",
+            resourceTitle: "What Are You Looking For?",
+            linkStore: "Atana Store",
+            linkStoreDesc: "Photos: Digital, Frames, Prints & More",
+            linkKidarasa: "Kidarasa", // Changed title slightly
+            linkKidarasaDesc: "Skills, Guides & More.",
+            linkMoney: "Money Mindset",
+            linkMoneyDesc: "Dialogues on Finance and Money.",
+            linkCollab: "Collaboration",
+            linkCollabDesc: "My story & how we can partner.",
             footerRights: "All rights reserved.",
-
-            // Sub Pages (General)
             backLink: "Back",
-
-            // Placeholder/Embed Content
-            stickerShopEmbed: "Sticker shop content will be embedded here.", // Example, may not be needed if embed has text
-            guideListEmbed: "PDF Guides content or embed will go here.", // Example
-
-            // Contact Page
-            contactTitle: "Contact Me",
-            contactIntro: "Get in touch for collaborations, bookings, or inquiries:",
+            storeComingSoon: "The Atana Store is launching soon! Stay tuned for digital photos, frames, and stickers.",
+            kidarasaComingSoon: "Kidarasa digital guides are under development. Get ready to learn!",
+            moneyComingSoon: "Money Mindset sessions are being planned. Expect practical financial insights.",
+            contactTitle: "Let's Connect",
+            contactIntro: "Interested in working together or have a question? Reach out:",
             contactEmailLabel: "Email:",
             contactPhoneLabel: "Phone / WhatsApp:",
-            contactSocialPrompt: "Connect on Social Media (links in footer).",
-
-            // About Page
-            aboutTitle: "About Me",
-            aboutIntro: "Hi, I'm Julius Moshiro, a digital creator based in Tanzania. Through Atana Ventures, I focus on exploring technology, sharing insights from running, crafting visual stories, and providing tips on digital monetization. My goal is to share valuable insights and resources to help others learn and grow.", // Example text
-            aboutSkillsTitle: "What I Do",
-            aboutSkillTech: "Tech Exploration & Tips",
-            aboutSkillRunning: "Running & Endurance",
-            aboutSkillStorytelling: "Visual Storytelling",
-            aboutSkillDigital: "Digital Monetization Strategies",
-            aboutMission: "I believe in the power of sharing knowledge and experiences. Whether it's through photography, practical guides, or tech advice, I aim to empower individuals in the digital space. Atana Ventures is the platform for these activities.", // Example text
+            contactSocialPrompt: "Find me on social media (links below).",
+            aboutTitle: "About & Collaboration",
+            aboutIntro: "Hi, I'm Julius Moshiro. I explore the digital world, share insights from my runs, tell stories through my lens, and discuss practical ways to thrive online. Atana Ventures is my platform for this journey.",
+            aboutSkillsTitle: "What I Focus On",
+            aboutSkillTech: "Digital Tools & Trends",
+            aboutSkillRunning: "Endurance & Exploration",
+            aboutSkillStorytelling: "Visual Content Creation",
+            aboutSkillDigital: "Online Growth Strategies",
+            aboutMission: "My mission is to share actionable knowledge and authentic experiences to empower others in their digital and personal growth.",
+            aboutCollabTitle: "Let's Collaborate",
+            aboutCollabPrompt: "Interested in collaborating? Whether it's content creation, speaking engagements, or brand partnerships, let's discuss how we can create value together. Use the contact details or social links.",
+             // Specific Page Titles/Headings (Ensure these match HTML)
+             storeTitle: "Atana Store", // For store.html <title> and <h1>
+             kidarasaTitle: "Kidarasa", // For kidarasa.html <title> and <h1>
 
         },
         sw: {
-            // Index Page
-            profileName: "Julius Moshiro", // Translate as needed
-            profileTagline: "Muundaji Dijitali | Atana Ventures", // Example translation
-            resourceTitle: "Gundua Rasilimali na Huduma", // Example translation
-            linkFreeResources: "Rasilimali za Bure",
-            linkFreeResourcesDesc: "Pakua miongozo na vidokezo",
-            linkNewsletter: "Jarida",
-            linkNewsletterDesc: "Jisajili kupata taarifa",
-            linkStickers: "Jipatie Stika",
-            linkStickersDesc: "Stika kali kutoka DukaStika",
-            linkPdfGuides: "Vijarida na Miongozo",
-            linkPdfGuidesDesc: "Vidokezo na miongozo ya kina",
-            linkFramedPictures: "Picha za Fremu",
-            linkFramedPicturesDesc: "Nunua picha zilizochapishwa",
-            linkCollaboration: "Tushirikiane",
-            linkCollaborationDesc: "Tufanye kazi pamoja",
-            linkBooking: "Nihifadhi", // Or "Book Appointment" etc.
-            linkBookingDesc: "Teknolojia, Mbio, Usimulizi",
-            footerRights: "Haki zote zimehifadhiwa.", // Example translation
-
-            // Sub Pages (General)
+            profileName: "Julius Moshiro",
+            profileTagline: "Mwana Digitali | Atana Ventures",
+            resourceTitle: "Unatafuta Nini?",
+            linkStore: "Atana Store",
+            linkStoreDesc: "Picha: Za Kidigitali, Fremu na Prints.",
+            linkKidarasa: "Kidarasa", // Changed title slightly
+            linkKidarasaDesc: "Vijarida na Juzi tofauti",
+            linkMoney: "Mtazamo wa Pesa",
+            linkMoneyDesc: "Majadiliano Kuhusu fedha.",
+            linkCollab: "Tushirikiane",
+            linkCollabDesc: "Hadithi yangu & jinsi tunavyoweza kushirikiana.",
+            footerRights: "Haki zote zimehifadhiwa.",
             backLink: "Rudi",
-
-            // Placeholder/Embed Content
-            stickerShopEmbed: "Maudhui ya duka la stika yatawekwa hapa.", // Example
-            guideListEmbed: "Maudhui ya Miongozo ya PDF au embed itawekwa hapa.", // Example
-
-            // Contact Page
-            contactTitle: "Wasiliana Nami",
-            contactIntro: "Wasiliana nami kushirikiana au maswali:",
+            storeComingSoon: "Duka la Atana linakuja hivi karibuni! Kaa tayari kwa picha za kidijitali, fremu, na stika.",
+            kidarasaComingSoon: "Miongozo ya Kidarasa inatayarishwa. Jiandae kujifunza!",
+            moneyComingSoon: "Vikao vya Mtazamo wa Pesa vinapangwa. Tarajia maarifa halisi ya kifedha.",
+            contactTitle: "Tuwasiliane",
+            contactIntro: "Ungependa tushirikiane au una swali? Wasiliana nami:",
             contactEmailLabel: "Barua Pepe:",
             contactPhoneLabel: "Simu / WhatsApp:",
-            contactSocialPrompt: "Ungana kwenye Mitandao ya Kijamii (viungo vipo chini).",
-
-            // About Page
-            aboutTitle: "Kuhusu Mimi",
-            aboutIntro: "Habari, mimi ni Julius Moshiro, mwana dijitali kutoka Tanzania. Kupitia Atana Ventures, najikita katika teknolojia, kushiriki maarifa na kutoa vidokezo kuhusu uzalishaji fedha kidijitali. Lengo langu ni kushiriki maarifa na rasilimali muhimu kusaidia wengine kujifunza na kukua.", // Example translation
-            aboutSkillsTitle: "Ninachofanya",
-            aboutSkillTech: "Ugunduzi kutumia Teknolojia zinazonizunguka",
-            aboutSkillRunning: "Mbio na Utalii wa maeneo",
-            aboutSkillStorytelling: "Usimulizi kwa Picha",
-            aboutSkillDigital: "Mikakati ya Uchui Mtandaoni",
-            aboutMission: "Ninaamini katika nguvu ya kushiriki maarifa na uzoefu. Iwe ni kupitia upigaji picha, miongozo ya vitendo, au ushauri wa kiteknolojia, nalenga kuwawezesha watu binafsi katika ulimwengu wa kidijitali. Atana Ventures ndiyo jukwaa la shughuli hizi.", // Example translation
+            contactSocialPrompt: "Nipate kwenye mitandao ya kijamii (viungo vipo chini).",
+            aboutTitle: "Kuhusu Mimi & Ushirikiano",
+            aboutIntro: "Habari, mimi ni Julius Moshiro. Nagundua ulimwengu wa kidijitali, nashiriki maarifa kutoka kwenye mbio zangu, nasimulia hadithi kupitia picha zangu, na najadili njia za kufanikiwa mtandaoni. Atana Ventures ndio jukwaa langu la safari hii.",
+            aboutSkillsTitle: "Ninachozingatia",
+            aboutSkillTech: "Zana na Mwenendo wa Kidijitali",
+            aboutSkillRunning: "Uvumilivu na Ugunduzi",
+            aboutSkillStorytelling: "Uundaji Maudhui kwa Picha",
+            aboutSkillDigital: "Mikakati ya Ukuaji Mtandaoni",
+            aboutMission: "Dhamira yangu ni kushiriki maarifa yenye vitendo na uzoefu halisi ili kuwawezesha wengine katika ukuaji wao wa kidijitali na kibinafsi.",
+            aboutCollabTitle: "Tushirikiane",
+            aboutCollabPrompt: "Ungependa kushirikiana? Iwe ni uundaji wa maudhui, uzungumzaji, au ushirikiano wa kibiashara, tujadili jinsi tunavyoweza kuleta thamani pamoja. Tumia mawasiliano yaliyopo au viungo vya mitandao ya kijamii.",
+            // Specific Page Titles/Headings (Ensure these match HTML)
+            storeTitle: "Duka la Atana", // For store.html <title> and <h1>
+            kidarasaTitle: "Kidarasa", // For kidarasa.html <title> and <h1>
         }
     };
 
-    // --- Functions ---
+    // --- Theme Functions ---
+    const applyTheme = (theme) => {
+        bodyElement.setAttribute('data-theme', theme);
+        // Update toggle button icon based on the theme applied
+        if (themeToggleButton) {
+             themeToggleButton.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+         // console.log(`Theme applied: ${theme}`);
+    };
+
+    const setThemePreference = (theme) => {
+        localStorage.setItem('theme', theme); // Save preference
+        applyTheme(theme);
+    };
+
+    const toggleTheme = () => {
+        const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setThemePreference(newTheme);
+    };
+
+    // --- Language Functions ---
     function setLanguage(lang) {
         if (!translations[lang]) return;
 
-        // 1. Update text content of translatable elements
+        const titleElement = document.querySelector('title');
+        let pageKey = null;
+
+        // Determine current page for title setting
+        if (document.body.classList.contains('page-store')) pageKey = 'storeTitle';
+        else if (document.body.classList.contains('page-kidarasa')) pageKey = 'kidarasaTitle';
+        else if (document.querySelector('.about-content')) pageKey = 'aboutTitle';
+        else if (document.querySelector('.profile-header')) pageKey = 'profileName'; // Index page
+
+        // Update title tag
+        if (titleElement) {
+             if (pageKey && translations[lang][pageKey]) {
+                 let baseTitle = translations[lang][pageKey];
+                 // Append site name differently for index vs subpages
+                 titleElement.textContent = pageKey === 'profileName'
+                    ? `${baseTitle} - Atana Ventures`
+                    : `${baseTitle} - Julius Moshiro`;
+             } else {
+                // Fallback title if key missing or page unknown
+                 titleElement.textContent = "Julius Moshiro - Atana Ventures";
+             }
+        }
+
+
+        // Update text content of translatable elements
         translatableElements.forEach(el => {
             const key = el.getAttribute('data-translate');
-            if (translations[lang][key] !== undefined) {
-                if (el.tagName === 'INPUT' && el.placeholder) {
-                    el.placeholder = translations[lang][key];
-                } else {
-                    // Use innerHTML IF the key is known to contain HTML (use with caution)
-                    // For simple text replacement, textContent is safer.
-                    // Example check (adjust if needed):
-                    // const safeKeys = ['key1', 'key2']; // Keys allowed to contain HTML
-                    // if (safeKeys.includes(key)) {
-                    //     el.innerHTML = translations[lang][key];
-                    // } else {
-                         el.textContent = translations[lang][key];
-                    // }
-                }
-            } else {
-                // console.warn(`Translation key "${key}" not found for language "${lang}"`);
+            if (key && translations[lang][key] !== undefined) {
+                el.textContent = translations[lang][key];
             }
         });
 
-        // 2. Update active button style
+        // Update active language button style
         langButtons.forEach(button => {
             button.classList.toggle('active', button.getAttribute('data-lang') === lang);
         });
 
-        // 3. Update UZA Embed Locale (if the element exists on the page)
-        const uzaProductsElement = document.querySelector('uza-products');
-        if (uzaProductsElement) {
-            uzaProductsElement.setAttribute('__locale-override', lang);
-             console.log(`UZA locale override set to: ${lang}`); // For debugging
-        }
+        // Update UZA Embed Locale (if element exists on the page)
+        const uzaProductsElements = document.querySelectorAll('uza-products');
+        uzaProductsElements.forEach(uzaEmbed => {
+            uzaEmbed.setAttribute('__locale-override', lang);
+            // console.log(`UZA locale override set to: ${lang} for embed`, uzaEmbed);
+        });
 
-        // 4. Store preference and update HTML lang attribute
+
+        // Store language preference and update HTML lang attribute
         localStorage.setItem('preferredLanguage', lang);
         document.documentElement.lang = lang;
     }
 
     // --- Event Listeners ---
+
+    // Theme Toggle Listener
+    if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', toggleTheme);
+    }
+
+    // Language Buttons Listener
     langButtons.forEach(button => {
         button.addEventListener('click', () => {
             const lang = button.getAttribute('data-lang');
@@ -152,12 +175,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Keyboard Shortcuts Listener (Only on index page)
+    if (document.querySelector('.profile-header')) {
+         document.addEventListener('keydown', (e) => {
+            if (document.activeElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+            const key = e.key.toUpperCase();
+            let targetUrl = null;
+            switch (key) {
+                case 'S': targetUrl = 'store.html'; break;
+                case 'K': targetUrl = 'kidarasa.html'; break;
+                case 'M': targetUrl = document.querySelector('a[href*="moneymindset.tz"]')?.href; break; // Get external URL
+                case 'C': targetUrl = 'about.html'; break;
+            }
+            if (targetUrl) {
+                const link = document.querySelector(`.resource-list a[href="${targetUrl}"]`) || (key === 'M' ? document.querySelector('a[href*="moneymindset.tz"]') : null);
+                if (link) {
+                    link.style.transform = 'scale(0.98)';
+                    setTimeout(() => { link.style.transform = ''; }, 100);
+                    if (link.target === '_blank') {
+                         window.open(link.href, '_blank');
+                    } else {
+                        window.location.href = link.href;
+                    }
+                }
+                e.preventDefault();
+            }
+        });
+    }
+
+
     // --- Initial Setup ---
+
+    // Set Year
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
+    // Set Initial Theme
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Priority: Saved > OS Preference > Default (dark)
+    applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+
+    // Set Initial Language (and update titles)
     const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
-    setLanguage(preferredLanguage); // Call on load
+    setLanguage(preferredLanguage); // This also sets the initial page title
+
 
 }); // End DOMContentLoaded
