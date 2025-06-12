@@ -5,10 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const langButtons = document.querySelectorAll('.lang-button');
     const translatableElements = document.querySelectorAll('[data-translate]');
     const yearSpan = document.getElementById('current-year');
-    const themeToggleButton = document.getElementById('theme-toggle'); // Get theme toggle button
-    const bodyElement = document.body; // Get body element
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const bodyElement = document.body;
 
-    // --- Translations (Same as your last version) ---
+    // --- Config for Persistent Parameters ---
+    const TRACKED_PARAMS_KEY = 'persistentUrlParams';
+    const ALLOWED_PARAMS = ['refCode', 'lang', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']; // Add any params you want to track
+
+    // --- Translations (Same as your last version - truncated for brevity) ---
     const translations = {
         en: {
             profileName: "Julius Moshiro",
@@ -16,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resourceTitle: "What Are You Looking For?",
             linkStore: "Atana Store",
             linkStoreDesc: "Photos: Digital, Frames, Prints & More",
-            linkKidarasa: "Kidarasa", // Changed title slightly
+            linkKidarasa: "Kidarasa",
             linkKidarasaDesc: "Skills, Guides & More.",
             linkMoney: "Money Mindset",
             linkMoneyDesc: "Dialogues on Finance and Money.",
@@ -42,9 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             aboutMission: "My mission is to share actionable knowledge and authentic experiences to empower others in their digital and personal growth.",
             aboutCollabTitle: "Let's Collaborate",
             aboutCollabPrompt: "Interested in collaborating? Whether it's content creation, speaking engagements, or brand partnerships, let's discuss how we can create value together. Use the contact details or social links.",
-             // Specific Page Titles/Headings (Ensure these match HTML)
-             storeTitle: "Atana Store", // For store.html <title> and <h1>
-             kidarasaTitle: "Kidarasa", // For kidarasa.html <title> and <h1>
+            storeTitle: "Atana Store",
+            kidarasaTitle: "Kidarasa",
 
         },
         sw: {
@@ -53,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resourceTitle: "Unatafuta Nini?",
             linkStore: "Atana Store",
             linkStoreDesc: "Picha: Za Kidigitali, Fremu na Prints.",
-            linkKidarasa: "Kidarasa", // Changed title slightly
+            linkKidarasa: "Kidarasa",
             linkKidarasaDesc: "Vijarida na Juzi tofauti",
             linkMoney: "Mtazamo wa Pesa",
             linkMoneyDesc: "Majadiliano Kuhusu fedha.",
@@ -79,24 +82,118 @@ document.addEventListener('DOMContentLoaded', () => {
             aboutMission: "Dhamira yangu ni kushiriki maarifa yenye vitendo na uzoefu halisi ili kuwawezesha wengine katika ukuaji wao wa kidijitali na kibinafsi.",
             aboutCollabTitle: "Tushirikiane",
             aboutCollabPrompt: "Ungependa kushirikiana? Iwe ni uundaji wa maudhui, uzungumzaji, au ushirikiano wa kibiashara, tujadili jinsi tunavyoweza kuleta thamani pamoja. Tumia mawasiliano yaliyopo au viungo vya mitandao ya kijamii.",
-            // Specific Page Titles/Headings (Ensure these match HTML)
-            storeTitle: "Duka la Atana", // For store.html <title> and <h1>
-            kidarasaTitle: "Kidarasa", // For kidarasa.html <title> and <h1>
+            storeTitle: "Duka la Atana",
+            kidarasaTitle: "Kidarasa",
         }
     };
+
+    // --- Persistent Parameter Functions ---
+    function getStoredParams() {
+        try {
+            const paramsString = localStorage.getItem(TRACKED_PARAMS_KEY);
+            return paramsString ? JSON.parse(paramsString) : {};
+        } catch (e) {
+            console.error("Error reading stored params:", e);
+            return {};
+        }
+    }
+
+    function storeParams(paramsObject) {
+        try {
+            localStorage.setItem(TRACKED_PARAMS_KEY, JSON.stringify(paramsObject));
+        } catch (e) {
+            console.error("Error storing params:", e);
+        }
+    }
+
+    function processUrlParameters() {
+        const currentUrl = new URL(window.location.href);
+        const urlParams = new URLSearchParams(currentUrl.search);
+        let storedParams = getStoredParams();
+        let activeParams = { ...storedParams }; // Start with stored params
+        let paramsChanged = false;
+
+        // Merge URL params, URL params take precedence
+        ALLOWED_PARAMS.forEach(paramName => {
+            if (urlParams.has(paramName)) {
+                const urlValue = urlParams.get(paramName);
+                if (activeParams[paramName] !== urlValue) {
+                    activeParams[paramName] = urlValue;
+                    paramsChanged = true;
+                }
+            } else if (!activeParams.hasOwnProperty(paramName) && storedParams.hasOwnProperty(paramName)) {
+                // This case is covered by initial spread, but good for clarity
+                // If URL doesn't have it, but storage did, it's already in activeParams
+            } else if (!urlParams.has(paramName) && !activeParams.hasOwnProperty(paramName)) {
+                // Parameter is neither in URL nor in current active (or storage)
+                // If we want to REMOVE a param from storage if it's not in URL, we'd do it here.
+                // For "sticky" behavior, we keep it if it was in storage.
+            }
+        });
+
+        // Clean up activeParams: remove any params not in ALLOWED_PARAMS or empty
+        for (const key in activeParams) {
+            if (!ALLOWED_PARAMS.includes(key) || activeParams[key] === null || activeParams[key] === '') {
+                delete activeParams[key];
+                paramsChanged = true;
+            }
+        }
+
+
+        if (paramsChanged || JSON.stringify(activeParams) !== JSON.stringify(getStoredParams())) {
+            storeParams(activeParams);
+        }
+
+        // Update current browser URL if it doesn't reflect activeParams
+        const newSearchParams = new URLSearchParams();
+        Object.entries(activeParams).forEach(([key, value]) => {
+            if (value) newSearchParams.set(key, value);
+        });
+        const newSearchString = newSearchParams.toString();
+
+        if (currentUrl.search.substring(1) !== newSearchString) {
+            currentUrl.search = newSearchString ? `?${newSearchString}` : '';
+            // Using replaceState to avoid adding to history and reloading
+            history.replaceState(null, '', currentUrl.toString());
+        }
+        return activeParams;
+    }
+
+    function updatePageLinks(activeParams) {
+        const links = document.querySelectorAll('a[href]');
+        const currentOrigin = window.location.origin;
+
+        links.forEach(link => {
+            try {
+                const linkUrl = new URL(link.href, window.location.href); // Resolve relative URLs
+
+                // Only modify internal links, not mailto: or tel: or external ones
+                if (linkUrl.protocol.startsWith('http') && linkUrl.origin === currentOrigin) {
+                    const linkParams = new URLSearchParams(linkUrl.search);
+                    Object.entries(activeParams).forEach(([key, value]) => {
+                        if (value) { // Ensure value is not empty
+                            linkParams.set(key, value);
+                        }
+                    });
+                    linkUrl.search = linkParams.toString();
+                    link.href = linkUrl.toString();
+                }
+            } catch (e) {
+                // console.warn(`Could not process link: ${link.href}`, e);
+            }
+        });
+    }
 
     // --- Theme Functions ---
     const applyTheme = (theme) => {
         bodyElement.setAttribute('data-theme', theme);
-        // Update toggle button icon based on the theme applied
         if (themeToggleButton) {
              themeToggleButton.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         }
-         // console.log(`Theme applied: ${theme}`);
     };
 
     const setThemePreference = (theme) => {
-        localStorage.setItem('theme', theme); // Save preference
+        localStorage.setItem('theme', theme);
         applyTheme(theme);
     };
 
@@ -113,28 +210,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const titleElement = document.querySelector('title');
         let pageKey = null;
 
-        // Determine current page for title setting
         if (document.body.classList.contains('page-store')) pageKey = 'storeTitle';
         else if (document.body.classList.contains('page-kidarasa')) pageKey = 'kidarasaTitle';
         else if (document.querySelector('.about-content')) pageKey = 'aboutTitle';
-        else if (document.querySelector('.profile-header')) pageKey = 'profileName'; // Index page
+        else if (document.querySelector('.profile-header')) pageKey = 'profileName';
 
-        // Update title tag
         if (titleElement) {
              if (pageKey && translations[lang][pageKey]) {
                  let baseTitle = translations[lang][pageKey];
-                 // Append site name differently for index vs subpages
                  titleElement.textContent = pageKey === 'profileName'
                     ? `${baseTitle} - Atana Ventures`
                     : `${baseTitle} - Julius Moshiro`;
              } else {
-                // Fallback title if key missing or page unknown
                  titleElement.textContent = "Julius Moshiro - Atana Ventures";
              }
         }
 
-
-        // Update text content of translatable elements
         translatableElements.forEach(el => {
             const key = el.getAttribute('data-translate');
             if (key && translations[lang][key] !== undefined) {
@@ -142,32 +233,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Update active language button style
         langButtons.forEach(button => {
             button.classList.toggle('active', button.getAttribute('data-lang') === lang);
         });
 
-        // Update UZA Embed Locale (if element exists on the page)
         const uzaProductsElements = document.querySelectorAll('uza-products');
         uzaProductsElements.forEach(uzaEmbed => {
             uzaEmbed.setAttribute('__locale-override', lang);
-            // console.log(`UZA locale override set to: ${lang} for embed`, uzaEmbed);
         });
 
-
-        // Store language preference and update HTML lang attribute
         localStorage.setItem('preferredLanguage', lang);
         document.documentElement.lang = lang;
     }
 
     // --- Event Listeners ---
-
-    // Theme Toggle Listener
     if (themeToggleButton) {
         themeToggleButton.addEventListener('click', toggleTheme);
     }
 
-    // Language Buttons Listener
     langButtons.forEach(button => {
         button.addEventListener('click', () => {
             const lang = button.getAttribute('data-lang');
@@ -175,52 +258,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Keyboard Shortcuts Listener (Only on index page)
     if (document.querySelector('.profile-header')) {
          document.addEventListener('keydown', (e) => {
             if (document.activeElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
             const key = e.key.toUpperCase();
-            let targetUrl = null;
+            let targetLinkElement = null;
             switch (key) {
-                case 'S': targetUrl = 'store.html'; break;
-                case 'K': targetUrl = 'kidarasa.html'; break;
-                case 'M': targetUrl = document.querySelector('a[href*="moneymindset.tz"]')?.href; break; // Get external URL
-                case 'C': targetUrl = 'about.html'; break;
+                case 'S': targetLinkElement = document.querySelector('a[href^="store"]'); break;
+                case 'K': targetLinkElement = document.querySelector('a[href^="kidarasa"]'); break;
+                case 'M': targetLinkElement = document.querySelector('a[href*="moneymindset.tz"]'); break;
+                case 'C': targetLinkElement = document.querySelector('a[href^="about"]'); break;
             }
-            if (targetUrl) {
-                const link = document.querySelector(`.resource-list a[href="${targetUrl}"]`) || (key === 'M' ? document.querySelector('a[href*="moneymindset.tz"]') : null);
-                if (link) {
-                    link.style.transform = 'scale(0.98)';
-                    setTimeout(() => { link.style.transform = ''; }, 100);
-                    if (link.target === '_blank') {
-                         window.open(link.href, '_blank');
-                    } else {
-                        window.location.href = link.href;
-                    }
+            if (targetLinkElement) {
+                targetLinkElement.style.transform = 'scale(0.98)';
+                setTimeout(() => { targetLinkElement.style.transform = ''; }, 100);
+
+                // Get the potentially modified href (with persistent params)
+                const targetUrl = targetLinkElement.href;
+
+                if (targetLinkElement.target === '_blank') {
+                     window.open(targetUrl, '_blank');
+                } else {
+                    window.location.href = targetUrl;
                 }
                 e.preventDefault();
             }
         });
     }
 
-
     // --- Initial Setup ---
-
-    // Set Year
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // Set Initial Theme
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    // Priority: Saved > OS Preference > Default (dark)
     applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
 
-
-    // Set Initial Language (and update titles)
     const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
-    setLanguage(preferredLanguage); // This also sets the initial page title
+    setLanguage(preferredLanguage);
 
+    // Process URL parameters and update links (MUST BE AFTER other DOM manipulations if they add links)
+    const activeParams = processUrlParameters();
+    updatePageLinks(activeParams);
 
 }); // End DOMContentLoaded
