@@ -8,13 +8,13 @@
     <title>Julius Moshiro - Atana Ventures</title> <!-- Updated by JS -->
     <meta name="description" content="Julius Moshiro's personal hub via Atana Ventures. Explore the Atana Store (photos, prints), Kidarasa (guides), Money Mindset dialogues, and collaboration opportunities. Digital creator based in Tanzania.">
     <meta name="keywords" content="Julius Moshiro, Atana Ventures, Tanzania, Digital Creator, Photography, Running, Technology, Kidarasa, Money Mindset, Collaboration, Online Store">
-    <link rel="canonical" href="https://atana.co.tz/index.html">
+    <link rel="canonical" href="https://atana.co.tz/index">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:title" content="Julius Moshiro - Digital Creator | Atana Ventures">
     <meta property="og:description" content="Explore resources, shop at Atana Store, learn with Kidarasa, join Money Mindset talks, and connect for collaborations.">
     <meta property="og:image" content="https://atana.co.tz/images/thumb.jpg">
-    <meta property="og:url" content="https://atana.co.tz/index.html">
+    <meta property="og:url" content="https://atana.co.tz/index">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Julius Moshiro | Atana Ventures">
 
@@ -70,7 +70,7 @@
 
             <ul class="resource-list">
                 <li>
-                    <a href="store.html">
+                    <a href="store">
                         <span class="icon"><i class="fa-solid fa-store fa-fw"></i></span>
                         <span class="text">
                             <strong data-translate="linkStore">Atana Store</strong>
@@ -80,7 +80,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="kidarasa.html">
+                    <a href="kidarasa">
                         <span class="icon"><i class="fa-solid fa-chalkboard-teacher fa-fw"></i></span>
                         <span class="text">
                             <strong data-translate="linkKidarasa">Kidarasa</strong> <!-- Updated text slightly -->
@@ -101,7 +101,7 @@
                     </a>
                 </li>
                  <li>
-                    <a href="about.html">
+                    <a href="about">
                         <span class="icon"><i class="fa-solid fa-handshake-simple fa-fw"></i></span>
                         <span class="text">
                             <strong data-translate="linkCollab">Collaboration</strong>
