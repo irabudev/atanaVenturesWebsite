@@ -33,6 +33,16 @@
 
     <!-- Embeddable script from UZA Products -->
     <script async src="https://uza.co.tz/api/downloads/js/embeddable.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PS63Y00DGG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PS63Y00DGG');
+    </script>
 </head>
 <body class="page-kidarasa"> <!-- Added page-kidarasa class -->
     <div class="container">
