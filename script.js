@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Config for Persistent Parameters ---
     const TRACKED_PARAMS_KEY = 'persistentUrlParams';
-    const ALLOWED_PARAMS = ['refCode', 'lang', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']; // Add any params you want to track
+    const ALLOWED_PARAMS = ['refCode', 'refcode', 'source','donation', 'lang', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']; // Add any params you want to track
 
     // --- Translations (Same as your last version - truncated for brevity) ---
     const translations = {
