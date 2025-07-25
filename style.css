@@ -326,9 +326,9 @@ body[data-theme="light"] .resource-list .shortcut {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Default to start for all pages */
+    justify-content: flex-start;
     width: 100%;
-    gap: 15px; /* Add gap between back button and title */
+    gap: 15px;
     transition: border-color 0.3s ease;
 }
 
@@ -340,8 +340,6 @@ body[data-theme="light"] .resource-list .shortcut {
     transition: color 0.3s ease;
 }
 
-/* Specific override for 'About' page header alignment */
-.about-content + .page-header h1, /* A bit of a hack, might need better class */
 body:not(.page-full-height-embed) .page-header {
      justify-content: space-between;
 }
@@ -369,43 +367,41 @@ body:not(.page-full-height-embed) .page-header h1 {
 }
 
 /* ====================================================== */
-/* === FULL HEIGHT EMBED LAYOUT (Store/Kidarasa/Karani) === */
+/* === SCROLLABLE EMBED LAYOUT (Store/Kidarasa/Karani)  === */
 /* ====================================================== */
 
-.page-full-height-embed,
-.page-full-height-embed html {
-    height: 100%;
-    overflow: hidden;
+.page-full-height-embed html,
+.page-full-height-embed body {
+    height: 100%; /* Establish a base height for flexbox to work against */
 }
+
 .page-full-height-embed body {
     padding: 0;
     align-items: stretch;
-    min-height: 100%;
+    display: block; /* Override body flex to allow normal scrolling */
 }
+
+/* The container becomes the main flex parent, controlling the layout */
 .page-full-height-embed .container {
     display: flex;
     flex-direction: column;
     max-width: none;
     width: 100%;
-    height: 100%;
+    min-height: 100%; /* Use min-height to allow it to grow and enable scrolling */
     padding: 0 15px;
-    position: relative;
     text-align: left;
 }
 
 .page-full-height-embed .page-header {
-    flex-shrink: 0;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 0;
-    padding-right: 0;
+    flex-shrink: 0; /* Header doesn't grow or shrink */
+    padding: 5px 0; /* Compact padding */
     margin-bottom: 0;
 }
 
 /* Intro text section for embeddable pages */
 .page-intro {
-    flex-shrink: 0;
-    padding: 5px 20px 15px 20px;
+    flex-shrink: 0; /* Intro doesn't grow or shrink */
+    padding: 10px 20px; /* Compact padding */
     text-align: center;
     font-size: 0.95rem;
     color: var(--text-muted-color);
@@ -415,15 +411,15 @@ body:not(.page-full-height-embed) .page-header h1 {
 }
 .page-intro p { margin: 0; line-height: 1.5; }
 
-/* Main content area for full height pages */
+/* Main content area takes up all remaining space */
 .page-full-height-embed #uza-container {
-    flex-grow: 1;
+    flex-grow: 1; /* This is key: it fills the remaining vertical space */
     display: flex;
-    overflow-y: auto;
-    overflow-x: hidden;
-    margin: 0;
+    flex-direction: column;
+    min-height: 400px; /* Give it a minimum height to prevent collapse on load */
 }
 
+/* The uza-products embed fills its container */
 .page-full-height-embed #uza-container uza-products {
     display: block;
     width: 100%;
@@ -433,7 +429,7 @@ body:not(.page-full-height-embed) .page-header h1 {
 }
 
 .page-full-height-embed .main-footer {
-    display: none; /* Hide footer on embed pages for more space */
+    display: none; /* Hide footer for more space */
 }
 
 
