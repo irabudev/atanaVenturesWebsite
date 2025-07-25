@@ -27,14 +27,14 @@
 
 /* --- Light Theme --- */
 body[data-theme="light"] {
-    --bg-color: #f4f4f8; /* Light grey background */
-    --text-color: #222; /* Dark text */
-    --text-muted-color: #666; /* Medium grey muted text */
-    --primary-color: #0056b3; /* Darker blue */
-    --secondary-color: #17a2b8; /* Info blue/teal */
-    --card-bg: #ffffff; /* White cards */
-    --border-color: #d1d1d1; /* Light grey border */
-    --hover-bg: #e9ecef; /* Very light grey hover */
+    --bg-color: #f4f4f8;
+    --text-color: #222;
+    --text-muted-color: #666;
+    --primary-color: #0056b3;
+    --secondary-color: #17a2b8;
+    --card-bg: #ffffff;
+    --border-color: #d1d1d1;
+    --hover-bg: #e9ecef;
     --link-hover-color: var(--primary-color);
     --header-border-color: var(--border-color);
     --footer-border-color: var(--border-color);
@@ -68,14 +68,14 @@ body {
     align-items: flex-start;
     min-height: 100vh;
     padding: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
     max-width: 650px;
     width: 100%;
     text-align: center;
-    padding-top: 0px; /* Space for switchers */
+    padding-top: 0px;
     padding-bottom: 0px;
     position: relative;
 }
@@ -84,17 +84,16 @@ body {
 .switchers-container {
     position: absolute;
     top: 15px;
-    left: 0; /* Adjusted from right */
-    right: 0; /* Take full width */
+    left: 0;
+    right: 0;
     display: flex;
-    justify-content: space-between; /* Push items to ends */
+    justify-content: space-between;
     align-items: center;
-    padding: 0 10px; /* Padding inside container */
+    padding: 0 10px;
     z-index: 10;
-    pointer-events: none; /* Allow clicks through container */
+    pointer-events: none;
 }
 
-/* Individual Switcher Styles */
 .theme-switcher,
 .lang-switcher {
     background-color: var(--switcher-bg);
@@ -102,15 +101,10 @@ body {
     border-radius: 15px;
     border: 1px solid var(--switcher-border);
     box-shadow: 0 1px 3px var(--shadow-color-light);
-    display: inline-flex; /* Align items nicely */
+    display: inline-flex;
     align-items: center;
-    pointer-events: auto; /* Enable clicks on switchers */
+    pointer-events: auto;
     transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Theme Switcher Specific */
-.theme-switcher {
-    /* Positioned by flex container */
 }
 
 #theme-toggle {
@@ -118,17 +112,12 @@ body {
     border: none;
     color: var(--switcher-icon);
     cursor: pointer;
-    font-size: 0.9rem; /* Adjust icon size */
+    font-size: 0.9rem;
     padding: 3px 5px;
     transition: color 0.2s ease, transform 0.2s ease;
 }
 #theme-toggle:hover {
     transform: scale(1.1);
-}
-
-/* Language Switcher Specific */
-.lang-switcher {
-   /* Positioned by flex container */
 }
 
 .lang-button {
@@ -157,7 +146,7 @@ body {
 }
 
 
-/* --- Header & Profile --- */
+/* --- Header & Profile (Index Page) --- */
 .profile-header {
     padding: 10px 0;
     margin-bottom: 35px;
@@ -192,7 +181,7 @@ h1 {
     transition: color 0.3s ease;
 }
 
-/* --- Resources Section --- */
+/* --- Resources Section (Index Page) --- */
 .resources-section {
     margin-bottom: 40px;
 }
@@ -256,7 +245,6 @@ h1 {
     color: var(--secondary-color);
 }
 
-
 .resource-list .text {
     flex-grow: 1;
     line-height: 1.4;
@@ -267,7 +255,7 @@ h1 {
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 3px;
-     color: var(--text-color); /* Ensure text color transitions */
+     color: var(--text-color);
      transition: color 0.3s ease;
 }
 
@@ -285,14 +273,14 @@ h1 {
     right: 8px;
     font-size: 0.7rem;
     color: var(--text-muted-color);
-    background-color: rgba(0, 0, 0, 0.2); /* Keep darkish for contrast */
+    background-color: rgba(0, 0, 0, 0.2);
     padding: 1px 4px;
     border-radius: 3px;
     opacity: 0.7;
     transition: opacity 0.2s ease, color 0.3s ease;
 }
 body[data-theme="light"] .resource-list .shortcut {
-     background-color: rgba(0, 0, 0, 0.1); /* Lighter background */
+     background-color: rgba(0, 0, 0, 0.1);
 }
 
 .resource-list li a:hover .shortcut,
@@ -304,7 +292,7 @@ body[data-theme="light"] .resource-list .shortcut {
 /* --- Footer --- */
 .main-footer {
     margin-top: auto;
-    padding-top: 2px;
+    padding: 20px 0 0 0;
     font-size: 0.85rem;
     color: var(--text-muted-color);
     border-top: 1px solid var(--footer-border-color);
@@ -338,25 +326,28 @@ body[data-theme="light"] .resource-list .shortcut {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start; /* Default to start for all pages */
     width: 100%;
+    gap: 15px; /* Add gap between back button and title */
     transition: border-color 0.3s ease;
 }
-/* Remove bottom margin if followed by full-height content */
-.page-full-height-embed .page-header {
-    margin-bottom: 0;
-    padding-bottom: 15px; /* Add some padding */
-}
-
 
 .page-header h1 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin: 0;
+    text-align: left;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+/* Specific override for 'About' page header alignment */
+.about-content + .page-header h1, /* A bit of a hack, might need better class */
+body:not(.page-full-height-embed) .page-header {
+     justify-content: space-between;
+}
+body:not(.page-full-height-embed) .page-header h1 {
     text-align: right;
     flex-grow: 1;
-    padding-right: 10px;
-    color: var(--text-color); /* Apply theme color */
-    transition: color 0.3s ease;
 }
 
 .back-link {
@@ -369,7 +360,7 @@ body[data-theme="light"] .resource-list .shortcut {
     transition: color 0.2s ease;
 }
 
-.back-link i { margin-right: 5px; }
+.back-link i { margin-right: 8px; }
 
 .back-link:hover, .back-link:focus {
     color: var(--link-hover-color);
@@ -377,19 +368,8 @@ body[data-theme="light"] .resource-list .shortcut {
     outline: none;
 }
 
-/* --- Placeholder Content (Generic) --- */
-.placeholder-content {
-    min-height: 30vh; display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    border: 1px dashed var(--border-color); border-radius: 8px;
-    padding: 40px; margin: 20px 0; color: var(--text-muted-color);
-    width: 100%; text-align: center; transition: border-color 0.3s ease, color 0.3s ease;
-}
-.placeholder-content i { font-size: 2.5rem; margin-bottom: 15px; color: var(--border-color); transition: color 0.3s ease; }
-
-
 /* ====================================================== */
-/* === FULL HEIGHT EMBED LAYOUT (Store/Kidarasa)      === */
+/* === FULL HEIGHT EMBED LAYOUT (Store/Kidarasa/Karani) === */
 /* ====================================================== */
 
 .page-full-height-embed,
@@ -398,73 +378,69 @@ body[data-theme="light"] .resource-list .shortcut {
     overflow: hidden;
 }
 .page-full-height-embed body {
-    padding: 0; /* Remove body padding */
-    align-items: stretch; /* Stretch container vertically */
+    padding: 0;
+    align-items: stretch;
     min-height: 100%;
 }
 .page-full-height-embed .container {
     display: flex;
     flex-direction: column;
-    max-width: none; /* Full width */
+    max-width: none;
     width: 100%;
     height: 100%;
-    padding: 0; /* No padding on container */
+    padding: 0 15px;
     position: relative;
     text-align: left;
-    padding-top: 0px; /* Space for absolute switchers */
-}
-.page-full-height-embed .switchers-container {
-    padding: 0 20px; /* Add padding to switcher container */
 }
 
 .page-full-height-embed .page-header {
-    flex-shrink: 0; /* Header doesn't grow/shrink */
-    padding-top: 3px; /* Reduced top padding */
-    padding-bottom: 3px; /* Reduced bottom padding */
-    padding-left: 10px; /* Add padding */
-    padding-right: 10px; /* Add padding */
-    margin-bottom: 0; /* No margin */
+    flex-shrink: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
 }
 
-.page-full-height-embed .page-header h1 {
-    text-align: left;
-    padding-left: 5px; /* Spacing after back button */
-    padding-right: 0;
+/* Intro text section for embeddable pages */
+.page-intro {
+    flex-shrink: 0;
+    padding: 5px 20px 15px 20px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text-muted-color);
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
 }
+.page-intro p { margin: 0; line-height: 1.5; }
 
 /* Main content area for full height pages */
 .page-full-height-embed #uza-container {
-    flex-grow: 1; /* Takes up remaining vertical space */
-    display: flex; /* Use flex to make child fill height */
-    overflow-y: auto; /* Allow embed content to scroll if needed */
+    flex-grow: 1;
+    display: flex;
+    overflow-y: auto;
     overflow-x: hidden;
-    margin: 0; /* No margin */
-    /* Optional border */
-    /* border: 1px solid var(--border-color); */
-    /* border-radius: 8px; */
-    /* margin: 10px 20px; */ /* Add margin if border/radius is used */
+    margin: 0;
 }
 
-/* Target the uza-products embed specifically */
 .page-full-height-embed #uza-container uza-products {
-    display: block; /* Make it a block element */
-    width: 100%;   /* Full width of container */
-    height: 100%;  /* Full height of container */
-    flex-grow: 1; /* Grow to fill space if container is flex */
-    border: none; /* Remove default borders if any */
+    display: block;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    border: none;
 }
 
 .page-full-height-embed .main-footer {
-    flex-shrink: 0; /* Footer doesn't grow/shrink */
-    border-top: 1px solid var(--footer-border-color);
-    text-align: center;
+    display: none; /* Hide footer on embed pages for more space */
 }
 
 
 /* ====================================================== */
 /* === Standard Page Content Styles (About etc) === */
 /* ====================================================== */
-.page-content { /* Used on About page */
+.page-content {
     text-align: left;
     padding: 10px 0 20px 0;
     color: var(--text-color);
@@ -485,7 +461,6 @@ body[data-theme="light"] .resource-list .shortcut {
 .page-content a:hover, .page-content a:focus {
     color: var(--link-hover-color); text-decoration: underline; outline: none;
 }
-/* About page specific */
 .about-content .profile-pic-about {
     width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
     margin: 0 auto 25px auto; display: block; border: 3px solid var(--border-color);
@@ -503,40 +478,16 @@ body[data-theme="light"] .resource-list .shortcut {
 @media (max-width: 600px) {
     html { font-size: 15px; }
 
-    /* Adjust standard page container padding */
+    /* General mobile container padding */
     body:not(.page-full-height-embed) { padding: 15px; }
-    .container:not(.page-full-height-embed .container) {
-        padding-top: 0px; /* More space for switchers */
-    }
-    .switchers-container {
-        top: 10px; /* Closer to top */
-        padding: 0 5px; /* Reduce padding */
-    }
-     .theme-switcher, .lang-switcher {
-        padding: 4px 6px; /* Smaller padding */
-     }
-     #theme-toggle { font-size: 0.8rem; }
-     .lang-button { font-size: 0.75rem; }
 
+    /* Switchers on all pages */
+    .switchers-container { top: 10px; padding: 0 5px; }
+    .theme-switcher, .lang-switcher { padding: 4px 6px; }
+    #theme-toggle { font-size: 0.8rem; }
+    .lang-button { font-size: 0.75rem; }
 
-     /* Mobile adjustments for FULL HEIGHT pages */
-    .page-full-height-embed .container {
-         padding-top: 2px; /* Space for switchers */
-    }
-     .page-full-height-embed .switchers-container {
-        padding: 0 5px; /* Padding */
-     }
-     .page-full-height-embed .page-header {
-        padding: 5px 5px; /* Reduced padding */
-    }
-     .page-full-height-embed .main-footer {
-        padding: 5px 5px;
-    }
-    /* Adjust embed container margin if using border/radius */
-    /* .page-full-height-embed #uza-container { margin: 8px 15px; } */
-
-
-    /* General Mobile Styles (Landing page etc) */
+    /* Index page mobile styles */
     .profile-header { padding: 5px 0; margin-bottom: 30px; }
     .profile-pic { width: 85px; height: 85px; }
     h1 { font-size: 1.6rem; }
@@ -548,14 +499,36 @@ body[data-theme="light"] .resource-list .shortcut {
     .resource-list .shortcut { font-size: 0.65rem; top: 4px; right: 6px; }
     .social-links a { font-size: 1.5rem; margin: 0 10px; }
 
-    /* Adjust generic subpage header/title for mobile */
-    .page-header { padding: 3px 0; margin-bottom: 5px; }
-    .page-header h1 { font-size: 1.4rem; }
-    /* Adjust full-height page header title */
-    .page-full-height-embed .page-header h1 { font-size: 1.4rem; padding-left: 5px; }
+    /* RESPONSIVE SUBPAGE NAVIGATION */
+    .page-header {
+        padding-top: 0;
+        padding-bottom: 0;
+        gap: 8px; /* Less gap on mobile */
+    }
+    .back-link span {
+        display: none; /* Hide 'Back' text on mobile */
+    }
+    .back-link i {
+        margin-right: 0; /* No margin as text is hidden */
+    }
+    .back-link {
+        font-size: 1.2rem;
+        padding: 8px; /* Better touch target */
+    }
+    .page-header h1 {
+        font-size: 1.25rem; /* Smaller title */
+    }
 
+    /* Mobile adjustments for FULL HEIGHT pages */
+    .page-full-height-embed .container {
+        padding: 0 5px;
+    }
+    .page-intro {
+        padding: 5px 10px 10px 10px;
+        font-size: 0.9rem;
+    }
 
-    /* Adjust standard page content for mobile */
-     .about-content .profile-pic-about { width: 100px; height: 100px; }
-     .page-content h2 { font-size: 1.3rem; }
+    /* Standard page mobile styles */
+    .about-content .profile-pic-about { width: 100px; height: 100px; }
+    .page-content h2 { font-size: 1.3rem; }
 }
