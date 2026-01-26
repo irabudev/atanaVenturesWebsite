@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Config for Persistent Parameters ---
     const TRACKED_PARAMS_KEY = 'persistentUrlParams';
-    const ALLOWED_PARAMS = ['refCode', 'refcode', 'source','donation', 'lang', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    const ALLOWED_PARAMS = ['refCode', 'refcode', 'source', 'donation', 'lang', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 
     // --- Translations ---
     const translations = {
@@ -21,27 +21,27 @@ document.addEventListener('DOMContentLoaded', () => {
             linkKarani: "Karani",
             linkKaraniDesc: "Automate receipts with my open-source tool.",
             linkStore: "Atana Store",
-            linkStoreDesc: "Photos: Digital, Frames, Prints & More",
+            linkStoreDesc: "Get: Skills, Tools, Frames, Photo Prints & More",
             linkKidarasa: "Kidarasa",
             linkKidarasaDesc: "Skills, Guides & More.",
-            linkMoney: "Money Mindset",
+            linkMoney: "Money Mindset Mondays",
             linkMoneyDesc: "Dialogues on Finance and Money.",
             linkCollab: "Collaboration",
             linkCollabDesc: "My story & how we can partner.",
             footerRights: "All rights reserved.",
             backLink: "Back",
             aboutTitle: "About & Collaboration",
-            aboutIntro: "Hi, I'm Julius Moshiro. I explore the digital world, share insights from my runs, tell stories through my lens, and discuss practical ways to thrive online. Atana Ventures is my platform for this journey.",
-            aboutSkillsTitle: "What I Focus On",
-            aboutSkillTech: "Digital Tools & Trends",
-            aboutSkillRunning: "Endurance & Exploration",
-            aboutSkillStorytelling: "Visual Content Creation",
-            aboutSkillDigital: "Online Growth Strategies",
-            aboutProjectsTitle: "My Projects",
-            aboutKaraniProject: "I believe in building tools to solve real problems. That's why I created <strong>Karani</strong>, a tool to eliminate the 'silent thief' of paperwork for businesses. It started as a personal solution and has grown into a powerful, open-source project. For those interested in the code, you can explore the <a href='https://github.com/juliustm/taxConsultant' target='_blank' rel='noopener noreferrer'>Karani repository on GitHub</a>.",
-            aboutMission: "My mission is to share actionable knowledge, authentic experiences, and useful tools to empower others in their digital and personal growth.",
-            aboutCollabTitle: "Let's Collaborate",
-            aboutCollabPrompt: "Interested in collaborating? Whether it's about Karani, content creation, speaking engagements, or brand partnerships, let's discuss how we can create value together.",
+            aboutIntro: "I’m Julius Moshiro. Through Atana Ventures, I bridge the gap between digital growth and real-world endurance. Whether I’m behind a lens, on a long-distance run, or writing code, my focus is building tools that return time and autonomy to creators and businesses.",
+            aboutToolkitTitle: "My Open-Source Toolkit",
+            aboutNyotaTitle: "Nyota ✨",
+            aboutNyotaDesc: "A sovereign digital storefront that eliminates middleman commissions. It’s built for creators who want radical simplicity and secure, passwordless access for their audience.",
+            aboutStokiTitle: "Stoki",
+            aboutStokiDesc: "A simple tool for managing stock and sales. It tracks your inventory without the need for expensive POS hardware or heavy upfront costs.",
+            aboutKaraniTitle: "Karani",
+            aboutKaraniDesc: "An open-source solution designed to eliminate the \"silent thief\" of manual paperwork.",
+            aboutBuildTitle: "Let’s Build Something",
+            aboutBuildDesc: "I believe in tools that solve real problems. If you are a creator ready to own your platform or a business looking to automate the mundane, let’s connect.",
+            aboutCta: "", /* Deprecated/Moved into Nyota Desc to keep context or just removed from usage */
             storeTitle: "Atana Store",
             kidarasaTitle: "Kidarasa",
             karaniTitle: "Karani",
@@ -55,27 +55,27 @@ document.addEventListener('DOMContentLoaded', () => {
             linkKarani: "Karani",
             linkKaraniDesc: "Ondoa usumbufu wa risiti na zana yangu.",
             linkStore: "Atana Store",
-            linkStoreDesc: "Picha: Za Kidigitali, Fremu na Prints.",
+            linkStoreDesc: "Jipatie: Picha, Ujuzi, Vifaa, Fremu na vinginevyo",
             linkKidarasa: "Kidarasa",
             linkKidarasaDesc: "Vijarida na Juzi tofauti",
-            linkMoney: "Mtazamo wa Pesa",
-            linkMoneyDesc: "Majadiliano Kuhusu fedha.",
+            linkMoney: "Money Mindset Mondays",
+            linkMoneyDesc: "Majadiliano ya kila mwezi kuhusu fikra na fedha.",
             linkCollab: "Tushirikiane",
             linkCollabDesc: "Hadithi yangu & jinsi tunavyoweza kushirikiana.",
             footerRights: "Haki zote zimehifadhiwa.",
             backLink: "Rudi",
             aboutTitle: "Kuhusu & Ushirikiano",
-            aboutIntro: "Habari, mimi ni Julius Moshiro. Nagundua ulimwengu wa kidijitali, nashiriki maarifa kutoka kwenye mbio zangu, nasimulia hadithi kupitia picha zangu, na najadili njia za kufanikiwa mtandaoni. Atana Ventures ndio jukwaa langu la safari hii.",
-            aboutSkillsTitle: "Ninachozingatia",
-            aboutSkillTech: "Zana na Mwenendo wa Kidijitali",
-            aboutSkillRunning: "Uvumilivu na Ugunduzi",
-            aboutSkillStorytelling: "Uundaji Maudhui kwa Picha",
-            aboutSkillDigital: "Mikakati ya Ukuaji Mtandaoni",
-            aboutProjectsTitle: "Miradi Yangu",
-            aboutKaraniProject: "Ninaamini katika kuunda zana za kutatua matatizo halisi. Ndiyo maana niliunda <strong>Karani</strong>, zana ya kuondoa 'mwizi wa kimya' wa makaratasi kwa wafanyabiashara. Ilianza kama suluhisho binafsi na imekua mradi imara wa 'open-source'. Kwa wanaopenda kuona 'code', unaweza kutembelea <a href='https://github.com/juliustm/taxConsultant' target='_blank' rel='noopener noreferrer'>repo ya Karani kwenye GitHub</a>.",
-            aboutMission: "Dhamira yangu ni kushiriki maarifa yenye vitendo, uzoefu halisi, na zana muhimu ili kuwawezesha wengine katika ukuaji wao wa kidijitali na kibinafsi.",
-            aboutCollabTitle: "Tushirikiane",
-            aboutCollabPrompt: "Ungependa kushirikiana? Iwe ni kuhusu Karani, uundaji wa maudhui, uzungumzaji, au ushirikiano wa kibiashara, tujadili jinsi tunavyoweza kuleta thamani pamoja.",
+            aboutIntro: "Mimi ni Julius Moshiro. Kupitia Atana Ventures, naunganisha ukuaji wa kidijitali na uhalisia wa maisha. Awe nipo nyuma ya kamera, nakimbia mbio ndefu, au naandika kodi, lengo langu ni kutengeneza zana zinazorudisha muda na uhuru kwa wabunifu na wafanyabiashara.",
+            aboutToolkitTitle: "Zana Zangu za Open-Source",
+            aboutNyotaTitle: "Nyota ✨",
+            aboutNyotaDesc: "Duka la kidijitali linalokupa mamlaka kamili na kuondoa makato ya kati. Imetengenezwa kwa ajili ya wabunifu wanaotaka urahisi na usalama wa kuingia bila nenosiri kwa hadhira yao.",
+            aboutStokiTitle: "Stoki",
+            aboutStokiDesc: "Zana rahisi ya kusimamia bidhaa na mauzo. Inakuwezesha kufuatilia stoku bila kuhitaji mashine za bei ghali za POS au gharama kubwa za kuanzia.",
+            aboutKaraniTitle: "Karani",
+            aboutKaraniDesc: "Suluhisho la open-source lililoundwa kuondoa 'mwizi wa kimya' wa kazi za makaratasi.",
+            aboutBuildTitle: "Tujenge Kitu Pamoja",
+            aboutBuildDesc: "Naamini katika zana zinazotatua matatizo halisi. Ikiwa wewe ni mbunifu uliye tayari kumiliki jukwaa lako, au mfanyabiashara unayetaka kurahisisha kazi za kila siku, tuwasiliane.",
+            aboutCta: "",
             storeTitle: "Duka la Atana",
             kidarasaTitle: "Kidarasa",
             karaniTitle: "Karani",
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const applyTheme = (theme) => {
         bodyElement.setAttribute('data-theme', theme);
         if (themeToggleButton) {
-             themeToggleButton.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            themeToggleButton.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         }
     };
 
@@ -200,18 +200,18 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (document.querySelector('.profile-header')) pageKey = 'profileName';
 
         if (titleElement) {
-             if (pageKey && translations[lang][pageKey]) {
-                 let baseTitle = translations[lang][pageKey];
-                 if (pageKey === 'profileName') {
+            if (pageKey && translations[lang][pageKey]) {
+                let baseTitle = translations[lang][pageKey];
+                if (pageKey === 'profileName') {
                     titleElement.textContent = `${baseTitle} - Atana Ventures`;
-                 } else if (pageKey === 'karaniTitle') {
+                } else if (pageKey === 'karaniTitle') {
                     titleElement.textContent = `${baseTitle} - Receipt Automation by Julius Moshiro`;
-                 } else {
+                } else {
                     titleElement.textContent = `${baseTitle} - Julius Moshiro`;
-                 }
-             } else {
-                 titleElement.textContent = "Julius Moshiro - Atana Ventures";
-             }
+                }
+            } else {
+                titleElement.textContent = "Julius Moshiro - Atana Ventures";
+            }
         }
 
         translatableElements.forEach(el => {
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (document.querySelector('.profile-header')) {
-         document.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', (e) => {
             if (document.activeElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
             const key = e.key.toUpperCase();
             let targetLinkElement = null;
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => { targetLinkElement.style.transform = ''; }, 100);
                 const targetUrl = targetLinkElement.href;
                 if (targetLinkElement.target === '_blank') {
-                     window.open(targetUrl, '_blank');
+                    window.open(targetUrl, '_blank');
                 } else {
                     window.location.href = targetUrl;
                 }
