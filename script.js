@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             aboutKaraniTitle: "Karani",
             aboutKaraniDesc: "Your business has a silent thief: paperwork. Karani automates receipt data entry, giving you back the hours to focus on your dream.",
             aboutProductionTitle: "Digital Content Production",
-            aboutProductionDesc: "I help organizations tell their stories and document their impact across Africa. My work focuses on capturing real human experiences with authenticity and care. Over the years, I've collaborated with respected organizations including the European Union, World Bank, and the Bill and Melinda Gates Foundation, creating content that brings their missions to life.",
+            aboutProductionDesc: "I help organizations tell their stories and document their impact across Africa. My work focuses on capturing real human experiences with authenticity and care. Over the years, I've collaborated with respected organizations including the European Union, African Wildlife Foundation, World Bank, and the Bill & Melinda Gates Foundation, creating content that brings their missions to life.",
             aboutBuildTitle: "Let’s Build Something",
             aboutBuildDesc: "I believe in tools that solve real problems. If you are a creator ready to own your platform or a business looking to automate the mundane, let’s connect.",
             aboutCta: "", /* Deprecated/Moved into Nyota Desc to keep context or just removed from usage */
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             aboutKaraniTitle: "Karani 🧾",
             aboutKaraniDesc: "Biashara yako ina mwizi wa kimya: makaratasi. Karani inaweka risiti zako kidigitali kiotomatiki, ikikupa muda zaidi wa kuzingatia ndoto yako.",
             aboutProductionTitle: "Uzalishaji wa Maudhui ya Kidijitali",
-            aboutProductionDesc: "Ninasaidia mashirika kusimulisha hadithi zao na kurekodi mafanikio yao kote Afrika. Kwa miaka kadhaa, nimefanya kazi na mashirika yaliyoheshimiwa ikiwa ni pamoja na Umoja wa Ulaya (EU), Benki ya Dunia, na Taasisi ya Bill na Melinda Gates, nikiumba maudhui yanayowasilisha nia zao kwa uhai.",
+            aboutProductionDesc: "Ninasaidia mashirika kusimulisha hadithi zao na kurekodi mafanikio yao kote Afrika. Kwa miaka kadhaa, nimefanya kazi na mashirika yaliyoheshimiwa ikiwa ni pamoja na Umoja wa Ulaya (EU), 'African Wild Life Foundation(AWF)', 'World Bank', na 'Bill & Melinda Gates Foundation', nikiumba maudhui yanayowasilisha nia zao kwa uhai.",
             aboutBuildTitle: "Tujenge Kitu Pamoja",
             aboutBuildDesc: "Naamini katika zana zinazotatua matatizo halisi. Ikiwa wewe ni mbunifu uliye tayari kumiliki jukwaa lako, au mfanyabiashara unayetaka kurahisisha kazi za kila siku, tuwasiliane.",
             aboutCta: "",
